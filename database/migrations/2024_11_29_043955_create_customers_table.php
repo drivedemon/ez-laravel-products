@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
+            $table->string('name');
+            $table->unsignedBigInteger('balance');
             $table->timestamps();
         });
     }

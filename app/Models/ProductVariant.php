@@ -7,28 +7,29 @@ use App\Traits\Hashidable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Product extends Model
+class ProductVariant extends Model
 {
     use EloquentDecodeHash;
     use HasFactory;
     use Hashidable;
 
     protected $fillable = [
-        'product_category_id',
+        'product_id',
         'name',
-        'description',
-        'status',
+        'sku',
+        'price',
+        'stock',
     ];
 
-    public function productCategory(): BelongsTo
+    public function product(): BelongsTo
     {
-        return $this->belongsTo(ProductCategory::class);
+        return $this->belongsTo(Product::class);
     }
 
-    public function productVariants(): HasMany
+    public function orders(): BelongsToMany
     {
-        return $this->hasMany(ProductVariant::class);
+        return $this->belongsToMany(Order::class)->withPivot('quantity');
     }
 }
