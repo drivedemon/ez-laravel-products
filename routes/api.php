@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\BalanceController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +21,7 @@ Route::post('check-credential', [LoginController::class, 'checkCredential'])->na
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
-//    Route::resource('dashboard', DashboardController::class)->only(['index']);
+    Route::resource('balance', BalanceController::class)->only(['index']);
 //    Route::resource('documents', DocumentController::class)->only(['index']);
 //
 //    Route::prefix('users')->group(function () {

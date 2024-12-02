@@ -10,8 +10,7 @@ trait ResponseTrait
 {
     public function exceptionResponse(Exception $exception): JsonResponse
     {
-        /* @phpstan-ignore-next-line */
-        return $this->errorResponse($exception->getMessage(), [], $exception->getStatusCode());
+        return $this->errorResponse($exception->getMessage(), [], $exception->getCode());
     }
 
     public function errorResponse(string $message, array $details = [], int $code = 400): JsonResponse
@@ -21,8 +20,6 @@ trait ResponseTrait
             'message' => $message,
             'details' => $details,
         ];
-
-        Log::warning('response', $response + ['http_code' => $code]);
 
         return response()->json($response, $code);
     }

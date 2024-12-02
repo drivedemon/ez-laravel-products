@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserLoginRequest;
-use App\Models\PersonalAccessToken;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
@@ -53,7 +52,6 @@ class LoginController extends Controller
 
     public function logout(): JsonResponse
     {
-        /** @var PersonalAccessToken $token */
         $token = auth()->user()->currentAccessToken();
         $token->delete();
 

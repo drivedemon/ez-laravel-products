@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Presenters\CustomerPresenter;
 use App\Traits\EloquentDecodeHash;
 use App\Traits\Hashidable;
+use App\Traits\Presentable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -14,6 +16,9 @@ class Customer extends Model
     use EloquentDecodeHash;
     use HasFactory;
     use Hashidable;
+    use Presentable;
+
+    protected $presenter = CustomerPresenter::class;
 
     protected $fillable = [
         'user_id',
