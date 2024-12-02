@@ -10,14 +10,13 @@ class ProductFactory extends Factory
 {
     public function definition(): array
     {
-        $category = ProductCategory::factory()->create();
         $name = $this->faker->words(3, true);
 
         return [
-            'product_category_id' => $category->id,
+            'product_category_id' => ProductCategory::inRandomOrder()->first()->id ?? ProductCategory::factory(),
             'name' => $name,
             'description' => $this->faker->realText(100),
-            'status' => ProductStatus::DRAFT,
+            'status' => ProductStatus::ON_SALE,
         ];
     }
 }

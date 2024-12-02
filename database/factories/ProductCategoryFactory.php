@@ -15,7 +15,6 @@ class ProductCategoryFactory extends Factory
             'name' => $name,
             'description' => $this->faker->realText(100),
             'slug' => Str::slug($name),
-            'sort' => 0,
         ];
     }
 }

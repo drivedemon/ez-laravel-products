@@ -15,8 +15,17 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('customer_id')->constrained('customers')->onDelete('cascade');
-            $table->unsignedBigInteger('total_price');
-            $table->unsignedTinyInteger('status')->default(OrderStatus::PROCESSING->value);
+            $table->string('code', 6)->index()->unique();
+            $table->unsignedBigInteger('total_price')->comment('Store as satang unit');
+            $table->unsignedTinyInteger('status')
+                ->default(OrderStatus::DRAFT->value)
+                ->comment('0 as draft status. 10 as processing status. 20 as completed status');
+            $table->dateTime('ordered_at')->nullable();
+            $table->string('address');
+            $table->string('subdistrict');
+            $table->string('district');
+            $table->string('province');
+            $table->string('zipcode');
             $table->timestamps();
         });
     }

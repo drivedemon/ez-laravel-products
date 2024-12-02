@@ -18,8 +18,15 @@ class Order extends Model
 
     protected $fillable = [
         'customer_id',
+        'code',
         'total_price',
         'status',
+        'ordered_at',
+        'address',
+        'subdistrict',
+        'district',
+        'province',
+        'zipcode',
     ];
 
     public function customer(): BelongsTo
@@ -29,11 +36,6 @@ class Order extends Model
 
     public function productVariants(): BelongsToMany
     {
-        return $this->belongsToMany(ProductVariant::class)->withPivot('quantity');
-    }
-
-    public function codes(): HasMany
-    {
-        return $this->hasMany(Code::class);
+        return $this->belongsToMany(ProductVariant::class)->withPivot('quantity')->withTimestamps();
     }
 }

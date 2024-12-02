@@ -16,7 +16,7 @@ class ProductVariantFactory extends Factory
             'product_id' => Product::inRandomOrder()->first()->id ?? Product::factory(),
             'name' => $name,
             'sku' => Str::slug($name),
-            'price' => random_int(100, 100000),
+            'price' => random_int(10000, 100000),
             'stock' => random_int(0, 100),
         ];
     }

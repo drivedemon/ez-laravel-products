@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
             $table->string('name');
-            $table->string('sku')->nullable();
-            $table->unsignedBigInteger('price');
+            $table->string('sku')->index()->nullable();
+            $table->unsignedBigInteger('price')->comment('Store as satang unit');
             $table->integer('stock')->default(0);
             $table->timestamps();
         });

@@ -2,18 +2,16 @@
 
 namespace App\Enums;
 
-enum OrderStatus: int
+enum CustomerGender: int
 {
-    case DRAFT = 0;
-    case PROCESSING = 10;
-    case COMPLETED = 20;
+    case MALE = 1;
+    case FEMALE = 2;
 
     public function label(): string
     {
         return match ($this) {
-            self::DRAFT => 'Draft',
-            self::PROCESSING => 'Processing',
-            self::COMPLETED => 'Completed',
+            self::MALE => 'Male',
+            self::FEMALE => 'Female',
         };
     }
 
