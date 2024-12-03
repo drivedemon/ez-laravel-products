@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\ProductStatus;
 use App\Traits\EloquentDecodeHash;
 use App\Traits\Hashidable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -20,6 +21,9 @@ class Product extends Model
         'name',
         'description',
         'status',
+    ];
+    protected $casts = [
+        'status' => ProductStatus::class,
     ];
 
     public function productCategory(): BelongsTo

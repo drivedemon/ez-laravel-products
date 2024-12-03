@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Api\BalanceController;
+use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,14 +20,13 @@ use Illuminate\Support\Facades\Route;
 Route::post('login', [LoginController::class, 'login'])->name('login');
 Route::post('check-credential', [LoginController::class, 'checkCredential'])->name('check_credential');
 
+Route::resource('products', ProductController::class)->only(['index']);
+
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
+    Route::get('codes', [OrderController::class, 'getRedemptionCodes'])->name('codes');
+
+    Route::resource('orders', OrderController::class)->only(['show']);
     Route::resource('balance', BalanceController::class)->only(['index']);
-//    Route::resource('documents', DocumentController::class)->only(['index']);
-//
-//    Route::prefix('users')->group(function () {
-//        Route::get('profile', [UserController::class, 'profile'])->name('users.profile');
-//        Route::put('profile/{user}', [UserController::class, 'update'])->name('users.update');
-//    });
 });

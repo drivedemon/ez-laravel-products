@@ -8,20 +8,12 @@ use Illuminate\Http\JsonResponse;
 
 class BalanceController extends Controller
 {
-    public function __construct()
-    {
-    }
-
     public function index(): JsonResponse
     {
-        $user = auth()->user();
+        $customer = auth()->user()?->customer;
 
-        try {
-            $customer = $user->customer;
+        $this->authorize('viewBalance', $customer);
 
-            return $this->successResponse(new BalanceResource($customer));
-        } catch (\Exception $exception) {
-            return $this->exceptionResponse($exception);
-        }
+        return $this->successResponse(new BalanceResource($customer));
     }
 }

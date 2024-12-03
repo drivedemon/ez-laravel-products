@@ -2,6 +2,8 @@
 
 namespace App\Traits;
 
+use Vinkla\Hashids\Facades\Hashids;
+
 trait Hashidable
 {
     public function getRouteKey(): string
@@ -11,13 +13,11 @@ trait Hashidable
 
     public function getHashidAttribute(): string
     {
-        return static::encodeHash($this->attributes['uuid']);
+        return static::encodeHash($this->attributes['id']);
     }
 
-    public static function encodeHash($uuid): string
+    public static function encodeHash($id): string
     {
-        $hexUuid = str_replace('-', '', $uuid);
-
-        return \gmp_strval(\gmp_init($hexUuid, 16), 10);
+        return Hashids::connection(get_called_class())->encode($id);
     }
 }

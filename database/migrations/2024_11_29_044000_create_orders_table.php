@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('code', 6)->index()->unique();
             $table->unsignedBigInteger('total_price')->comment('Store as satang unit');
             $table->unsignedTinyInteger('status')
+                ->index()
                 ->default(OrderStatus::DRAFT->value)
                 ->comment('0 as draft status. 10 as processing status. 20 as completed status');
             $table->dateTime('ordered_at')->nullable();

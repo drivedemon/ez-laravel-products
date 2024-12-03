@@ -17,7 +17,10 @@ return new class extends Migration
             $table->foreignId('product_category_id')->constrained('product_categories')->onDelete('cascade');
             $table->string('name');
             $table->text('description')->nullable();
-            $table->unsignedTinyInteger('status')->default(ProductStatus::DRAFT->value)->comment('0 as draft status. 10 as on sale status');
+            $table->unsignedTinyInteger('status')
+                ->index()
+                ->default(ProductStatus::DRAFT->value)
+                ->comment('0 as draft status. 10 as on sale status');
             $table->timestamps();
         });
     }

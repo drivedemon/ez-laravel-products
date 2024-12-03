@@ -14,10 +14,17 @@ class OrderSeeder extends Seeder
     public function run(): void
     {
         $customer = Customer::first();
-        Order::factory()->completed()->count(2)->create(['customer_id' => $customer->id]);
-        $orders = Order::factory()->processing()->count(4)->create(['customer_id' => $customer->id]);
+        $completedOrders = Order::factory()->completed()->count(2)->create(['customer_id' => $customer->id]);
+        $processingOrders = Order::factory()->processing()->count(4)->create(['customer_id' => $customer->id]);
 
-        foreach ($orders as $order) {
+        foreach ($completedOrders as $order) {
+            $productVariant = ProductVariant::inRandomOrder()->first();
+            $quantity = rand(1, $productVariant->stock);
+            $order->update(['total_price' => $productVariant->price * $quantity]);
+            $order->productVariants()->attach($productVariant->id, ['quantity' => $quantity]);
+        }
+
+        foreach ($processingOrders as $order) {
             $productVariant = ProductVariant::inRandomOrder()->first();
             $quantity = rand(1, $productVariant->stock);
             $order->update(['total_price' => $productVariant->price * $quantity]);

@@ -11,7 +11,7 @@ enum ProductStatus: int
     {
         return match ($this) {
             self::DRAFT => 'Draft',
-            self::ON_SALE => 'OnSale',
+            self::ON_SALE => 'On Sale',
         };
     }
 

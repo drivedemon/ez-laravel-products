@@ -19,7 +19,6 @@ class Customer extends Model
     use Presentable;
 
     protected $presenter = CustomerPresenter::class;
-
     protected $fillable = [
         'user_id',
         'first_name',
