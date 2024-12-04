@@ -21,7 +21,7 @@ class ProductRepository
     {
         $products = $this->product
             ->with(['productCategory', 'productVariants'])
-            ->where('status', Arr::get($filters, 'status', ProductStatus::ON_SALE));
+            ->where('status', Arr::get($filters, 'status', ProductStatus::PUBLISHED));
 
         if ($paginate) {
             return $products->paginate($paginate)->withQueryString();

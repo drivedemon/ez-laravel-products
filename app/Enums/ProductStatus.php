@@ -4,14 +4,14 @@ namespace App\Enums;
 
 enum ProductStatus: int
 {
-    case DRAFT = 0;
-    case ON_SALE = 10;
+    case UNPUBLISHED = 0;
+    case PUBLISHED = 10;
 
     public function label(): string
     {
         return match ($this) {
-            self::DRAFT => 'Draft',
-            self::ON_SALE => 'On Sale',
+            self::UNPUBLISHED => 'Unpublished',
+            self::PUBLISHED => 'Published',
         };
     }
 

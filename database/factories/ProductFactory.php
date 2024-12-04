@@ -16,7 +16,7 @@ class ProductFactory extends Factory
             'product_category_id' => ProductCategory::inRandomOrder()->first()->id ?? ProductCategory::factory(),
             'name' => $name,
             'description' => $this->faker->realText(100),
-            'status' => ProductStatus::ON_SALE,
+            'status' => ProductStatus::PUBLISHED,
         ];
     }
 }

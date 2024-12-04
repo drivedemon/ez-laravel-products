@@ -27,6 +27,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::get('codes', [OrderController::class, 'getRedemptionCodes'])->name('codes');
 
-    Route::resource('orders', OrderController::class)->only(['show']);
+    Route::resource('orders', OrderController::class)->only(['show', 'store']);
     Route::resource('balance', BalanceController::class)->only(['index']);
 });

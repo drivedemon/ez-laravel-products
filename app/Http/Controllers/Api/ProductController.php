@@ -19,8 +19,8 @@ class ProductController extends Controller
 
     public function index(): JsonResponse
     {
-        // Assume Request as status ON_SALE
-        $filters['status'] = ProductStatus::ON_SALE;
+        // Assume Request as status PUBLISHED
+        $filters['status'] = ProductStatus::PUBLISHED;
         // Set paginate by default from requirement
         $products = $this->productService->getProducts($filters, 10);
 
