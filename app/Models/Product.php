@@ -22,6 +22,7 @@ class Product extends Model
         'description',
         'status',
     ];
+
     protected $casts = [
         'status' => ProductStatus::class,
     ];

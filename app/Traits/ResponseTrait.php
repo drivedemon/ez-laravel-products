@@ -2,15 +2,14 @@
 
 namespace App\Traits;
 
-use Exception;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Log;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 trait ResponseTrait
 {
-    public function exceptionResponse(Exception $exception): JsonResponse
+    public function exceptionResponse(HttpException $exception): JsonResponse
     {
-        return $this->errorResponse($exception->getMessage(), [], $exception->getCode());
+        return $this->errorResponse($exception->getMessage(), [], $exception->getStatusCode());
     }
 
     public function errorResponse(string $message, array $details = [], int $code = 400): JsonResponse

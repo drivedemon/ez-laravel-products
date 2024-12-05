@@ -14,6 +14,11 @@ class OrderRepository
         $this->order = $order;
     }
 
+    public function create(OrderDTO $dto): Order
+    {
+        return $this->order->create($dto->toArray());
+    }
+
     public function getOrderByCustomerId(int $customerId): Collection
     {
         return $this->order->where('customer_id', $customerId)->get();

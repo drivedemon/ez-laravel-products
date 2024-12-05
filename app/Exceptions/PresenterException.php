@@ -2,6 +2,4 @@
 
 namespace App\Exceptions;
 
-class PresenterException extends \Exception
-{
-}
+class PresenterException extends \Exception {}

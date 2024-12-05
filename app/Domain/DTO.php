@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 class DTO
 {
     protected array $excludeMapper = [];
+
     protected array $requestMapper = [];
 
     public function __construct($payload = null)

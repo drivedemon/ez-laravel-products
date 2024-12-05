@@ -19,8 +19,8 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->unsignedTinyInteger('status')
                 ->index()
-                ->default(ProductStatus::DRAFT->value)
-                ->comment('0 as draft status. 10 as on sale status');
+                ->default(ProductStatus::UNPUBLISHED->value)
+                ->comment('0 as unpublished status. 10 as published status');
             $table->timestamps();
         });
     }

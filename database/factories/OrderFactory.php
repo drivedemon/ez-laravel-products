@@ -5,7 +5,6 @@ namespace Database\Factories;
 use App\Enums\OrderStatus;
 use App\Models\Customer;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 class OrderFactory extends Factory
 {

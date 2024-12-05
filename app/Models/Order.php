@@ -20,6 +20,7 @@ class Order extends Model
     use Presentable;
 
     protected $presenter = OrderPresenter::class;
+
     protected $fillable = [
         'customer_id',
         'code',
@@ -32,6 +33,7 @@ class Order extends Model
         'province',
         'zipcode',
     ];
+
     protected $casts = [
         'status' => OrderStatus::class,
         'ordered_at' => 'datetime',
