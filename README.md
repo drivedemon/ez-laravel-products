@@ -5,6 +5,7 @@
 ## Framework & Tools used
 
 - Laravel 10
+- hashids
 - pint
 
 # Development
