@@ -45,6 +45,8 @@ Preview DB structure (File name: `app/dbStructure/product-erd.jpg`)
 
 # Postman for testing
 
+collection for import to postman app and testing
+
 See in folder: `app/postman`
 
 API required login
