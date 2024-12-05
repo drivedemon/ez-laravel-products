@@ -28,7 +28,7 @@
 7. Create your Database `laravel-product`, update `DB_USERNAME`, `DB_PASSWORD` in .env
 8. Run `php artisan migrate --seed` to migrate and seed database
 9. Go to [http://ez-laravel-products.test](http://ez-laravel-products.test) to test your local website. 
-10. Create new feature branch to start working.
+10. Done!
 
 # Backend Structure
 
